@@ -13,8 +13,9 @@ defmodule PhQuantifiedSelfWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api" PhQuantifiedSelfWeb, as :api do
-    scope "/v1" Api.V1, as :v1 do
+  scope "/api", PhQuantifiedSelfWeb, as: :api do
+    scope "/v1", Api.V1, as: :v1 do
+      pipe_through :api
       resources "/foods", FoodController
     end
   end
