@@ -13,9 +13,14 @@ defmodule PhQuantifiedSelfWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api" PhQuantifiedSelfWeb, as :api do
+    scope "/v1" Api.V1, as :v1 do
+      resources "/foods", FoodController
+    end
+  end
+
   scope "/", PhQuantifiedSelfWeb do
     pipe_through :browser # Use the default browser stack
-
     get "/", PageController, :index
   end
 
