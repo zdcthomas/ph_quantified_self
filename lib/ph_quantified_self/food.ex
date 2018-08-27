@@ -2,6 +2,9 @@ defmodule PhQuantifiedSelf.Food do
   use Ecto.Schema
   import Ecto.Changeset
 
+  import Ecto.Query, warn: false
+  alias PhQuantifiedSelf.Repo
+
 
   schema "foods" do
     field :calories, :integer
@@ -15,5 +18,13 @@ defmodule PhQuantifiedSelf.Food do
     food
     |> cast(attrs, [:name, :calories])
     |> validate_required([:name, :calories])
+  end
+
+  def all do
+    Repo.all Food
+  end
+
+  def find(id) do
+    Repo.get(Food, id)
   end
 end
