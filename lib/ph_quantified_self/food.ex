@@ -20,6 +20,7 @@ defmodule PhQuantifiedSelf.Food do
     |> validate_required([:name, :calories])
   end
 
+
   def all do
     Repo.all Food
   end
@@ -28,9 +29,20 @@ defmodule PhQuantifiedSelf.Food do
     Repo.get!(Food,id)
   end
 
-  def create(attrs) do
-    attrs
-    |>Food.changeset(attrs)
-    |>Food.insert(attrs)
+  def update(%Food{} = food, attrs) do
+    food
+    |> Food.changeset(attrs)
+    |> Repo.update()
   end
+
+  def delete(%Food{} = food) do
+    Repo.delete(food)
+  end
+
+  def create(attrs \\ %{}) do
+    %Food{}
+    |>Food.changeset(attrs)
+    |>Repo.insert(attrs)
+  end
+
 end

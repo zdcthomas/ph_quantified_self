@@ -44,7 +44,8 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       assert length(Food.all) == 0
       name = "Bannana"
       calories = 150
-      Food.create(%{name: name, calories: calories})
+      attrs = %{name: name, calories: calories}
+      Food.create(attrs)
       [food | _] = Food.all
       assert food.name === name
       assert food.calories == calories
@@ -53,6 +54,7 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
     test "update" do
       Repo.insert(%Food{id: 1, name: "Bannana",calories: 150})
       food = Food.find(1)
+      require IEx; IEx.pry
       Food.update(food, %{name: "Mango"})
       food = Food.find(1)
       assert food.name == "Mango"
