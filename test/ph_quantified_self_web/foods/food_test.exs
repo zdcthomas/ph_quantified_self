@@ -12,6 +12,8 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
     end
 
     test "Invalid changeset attributes" do
+      require IEx; IEx.pry
+
       changeset = Food.changeset(%Food{}, @invalid_attributes)
       refute changeset.valid?
     end

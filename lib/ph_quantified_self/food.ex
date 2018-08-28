@@ -19,12 +19,4 @@ defmodule PhQuantifiedSelf.Food do
     |> cast(attrs, [:name, :calories])
     |> validate_required([:name, :calories])
   end
-
-  def all do
-    Repo.all Food
-  end
-
-  def find(id) do
-    Repo.get(Food, id)
-  end
 end
