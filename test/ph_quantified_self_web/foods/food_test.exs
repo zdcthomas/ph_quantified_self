@@ -54,7 +54,6 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
     test "update" do
       Repo.insert(%Food{id: 1, name: "Bannana",calories: 150})
       food = Food.find(1)
-      require IEx; IEx.pry
       Food.update(food, %{name: "Mango"})
       food = Food.find(1)
       assert food.name == "Mango"
