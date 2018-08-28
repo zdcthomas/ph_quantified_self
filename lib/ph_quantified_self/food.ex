@@ -40,9 +40,9 @@ defmodule PhQuantifiedSelf.Food do
   end
 
   def create(attrs \\ %{}) do
-    %Food{}
+    %Food{} 
     |>Food.changeset(attrs)
-    |>Repo.insert(attrs)
+    |>Repo.insert()
   end
 
 end

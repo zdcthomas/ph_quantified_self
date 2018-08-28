@@ -44,7 +44,7 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       assert length(Food.all) == 0
       name = "Bannana"
       calories = 150
-      attrs = %{name: name, calories: calories}
+      attrs = %{name: name, calories: calories, id: 20}
       Food.create(attrs)
       [food | _] = Food.all
       assert food.name === name
