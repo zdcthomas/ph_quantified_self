@@ -8,7 +8,8 @@ defmodule PhQuantifiedSelfWeb.Api.V1.FoodController do
   end
 
   def show(conn, params) do
-    food = Food.find()
+    food = Food.find(params["id"])
+    json conn, food
   end
   
 end

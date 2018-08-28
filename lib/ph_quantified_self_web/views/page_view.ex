@@ -3,7 +3,7 @@ defmodule PhQuantifiedSelfWeb.PageView do
 
   def render("show.json", food) do
     %{
-      name: food.name
+      name: food.name,
       calories: food.calories
     }
   end
