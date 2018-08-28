@@ -20,4 +20,19 @@ defmodule PhQuantifiedSelfWeb.Api.V1.FoodController do
       |>json(%{error: "Food not found"})
     end
   end
+
+  def create(conn, params) do
+    %{"food"=> food} = params
+    case Food.create(food) do
+      {:ok, food} ->
+        conn
+        |>put_status(200)
+        |>json(%{food: food})
+      {:error, error} ->
+        conn
+        |>put_status(400)
+        |>json(%{error: "#{inspect error.errors}"})
+    end
+    
+  end
 end
