@@ -1,6 +1,7 @@
 defmodule PhQuantifiedSelfWeb.FoodTest do
   use PhQuantifiedSelf.DataCase
   alias PhQuantifiedSelf.Food
+  alias PhQuantifiedSelf.Repo
 
   @valid_attributes %{name: "Bannana", calories: 150}
   @invalid_attributes %{name: 1234, calories: "string"}
@@ -12,12 +13,24 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
     end
 
     test "Invalid changeset attributes" do
-      require IEx; IEx.pry
 
       changeset = Food.changeset(%Food{}, @invalid_attributes)
       refute changeset.valid?
     end
   end
+
+  describe "food model queries" do
+    test "all" do
+      Repo.insert(%Food{name: "Bannana",calories: 150})
+      Repo.insert(%Food{name: "Grape",calories: 200})
+
+      foods = Food.all
+      assert length(foods) == 2
+      assert List.first(foods).name == "Bannana" 
+      assert List.first(foods).calories == 150 
+    end
+  end
+  
 
 
 end

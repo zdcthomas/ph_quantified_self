@@ -3,7 +3,7 @@ defmodule PhQuantifiedSelf.Food do
   import Ecto.Changeset
 
   import Ecto.Query, warn: false
-  alias PhQuantifiedSelf.Repo
+  alias PhQuantifiedSelf.{Repo, Food}
 
 
   schema "foods" do
@@ -18,5 +18,9 @@ defmodule PhQuantifiedSelf.Food do
     food
     |> cast(attrs, [:name, :calories])
     |> validate_required([:name, :calories])
+  end
+
+  def all do
+    Repo.all Food
   end
 end
