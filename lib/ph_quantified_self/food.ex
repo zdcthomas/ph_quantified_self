@@ -27,7 +27,7 @@ defmodule PhQuantifiedSelf.Food do
   end
 
   def find(id) do
-    Repo.get!(Food,id)
+    Repo.get(Food,id)
   end
 
   def update(%Food{} = food, attrs) do
