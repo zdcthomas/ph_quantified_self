@@ -6,5 +6,9 @@ defmodule PhQuantifiedSelfWeb.Api.V1.FoodController do
     foods = Food.all
     json conn, foods
   end
+
+  def show(conn, params) do
+    food = Food.find()
+  end
   
 end

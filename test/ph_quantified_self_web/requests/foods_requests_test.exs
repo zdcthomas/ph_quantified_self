@@ -17,16 +17,16 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
       assert bannana["calories"] == 150
     end
 
-    # test "get api/v1/foods/:id returns 200 for found id", %{conn: conn} do
-    #   Repo.insert(%Food{name: "Bannana",calories: 150, id: 1})
-    #   Repo.insert(%Food{name: "Grape",calories: 200})
+    test "get api/v1/foods/:id returns 200 for found id", %{conn: conn} do
+      Repo.insert(%Food{name: "Bannana",calories: 150, id: 1})
+      Repo.insert(%Food{name: "Grape",calories: 200})
 
-    #   conn = get conn, "/api/v1/foods/1"
-    #   response = json_response(conn, 200)
+      conn = get conn, "/api/v1/foods/1"
+      response = json_response(conn, 200)
 
-    #   assert response.name = "Bannana"
-    #   assert response.calories = "Bannana"
-    # end
+      assert response.name = "Bannana"
+      assert response.calories = "Bannana"
+    end
 
     # test "get api/v1/foods/:id returns 404 for not found id", %{conn: conn} do
     #   Repo.insert(%Food{name: "Bannana",calories: 150, id: 1})
