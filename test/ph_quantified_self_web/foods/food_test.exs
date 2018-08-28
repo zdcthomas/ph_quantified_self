@@ -49,9 +49,14 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       assert food.name === name
       assert food.calories == calories
     end
-    
+
+    test "update" do
+      Repo.insert(%Food{id: 1, name: "Bannana",calories: 150})
+      food = Food.find(1)
+      Food.update(food, %{name: "Mango"})
+      food = Food.find(1)
+      assert food.name == "Mango"
+      assert food.id == 1
+    end
   end
-  
-
-
 end
