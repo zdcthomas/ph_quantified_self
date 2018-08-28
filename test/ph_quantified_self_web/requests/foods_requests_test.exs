@@ -40,7 +40,7 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
   end
 
   describe "create/update queries" do
-    test "post api/v1/foods success" do
+    test "post api/v1/foods success", %{conn: conn} do
       name = "Grape"
       calories = 20
       food_params = %{food: %{name: name, calories: calories}}
@@ -53,9 +53,9 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
       assert food.name == name
       assert food.calories == calories
     end
-    test "post api/v1/foods failure" do
+    test "post api/v1/foods failure", %{conn: conn} do
       name = "Grape"
-      calories = 20
+      _calories = 20
       food_params = %{food: %{name: name}}
       conn = post conn, "/api/v1/foods", food_params
       response = json_response(conn, 400)
