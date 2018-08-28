@@ -58,5 +58,13 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       assert food.name == "Mango"
       assert food.id == 1
     end
+
+    test "delete" do
+      Repo.insert(%Food{id: 1, name: "Bannana",calories: 150})
+      food = Food.find(1)      
+      assert length(Food.all) == 1
+      Food.delete(food)
+      assert length(Food.all) == 0
+    end
   end
 end
