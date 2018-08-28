@@ -23,4 +23,14 @@ defmodule PhQuantifiedSelf.Food do
   def all do
     Repo.all Food
   end
+
+  def find(id) do
+    Repo.get!(Food,id)
+  end
+
+  def create(attrs) do
+    attrs
+    |>Food.changeset(attrs)
+    |>Food.insert(attrs)
+  end
 end
