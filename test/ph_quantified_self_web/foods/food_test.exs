@@ -42,8 +42,14 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
 
     test "create" do
       assert length(Food.all) == 0
-      Food.create
+      name = "Bannana"
+      calories = 150
+      Food.create(%{name: name, calories: calories})
+      [food | _] = Food.all
+      assert food.name === name
+      assert food.calories == calories
     end
+    
   end
   
 
