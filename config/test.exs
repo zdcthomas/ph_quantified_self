@@ -16,4 +16,5 @@ config :ph_quantified_self, PhQuantifiedSelf.Repo,
   password: "postgres",
   database: "ph_quantified_self_test",
   hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  ownership_timeout: 999999999
