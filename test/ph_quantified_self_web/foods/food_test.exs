@@ -39,6 +39,11 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       assert food.name == "Bannana"
       assert food.calories == 150
     end
+
+    test "create" do
+      assert length(Food.all) == 0
+      Food.create
+    end
   end
   
 
