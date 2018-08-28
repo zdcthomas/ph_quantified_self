@@ -29,6 +29,16 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       assert List.first(foods).name == "Bannana" 
       assert List.first(foods).calories == 150 
     end
+
+    test "find" do
+      Repo.insert(%Food{id: 1, name: "Bannana",calories: 150})
+      Repo.insert(%Food{name: "Grape",calories: 200})
+
+      food = Food.find(1)
+      assert food.id == 1
+      assert food.name == "Bannana"
+      assert food.calories == 150
+    end
   end
   
 
