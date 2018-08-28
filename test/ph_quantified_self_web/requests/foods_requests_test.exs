@@ -10,12 +10,11 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
 
       conn = get conn, "/api/v1/foods"
       response = json_response(conn, 200)
-      require IEx; IEx.pry
       bannana = List.first(response)
     
       assert length(response) == 2
-      assert bannana.name == "Bannana"
-      assert bannana.calories == 150
+      assert bannana["name"] == "Bannana"
+      assert bannana["calories"] == 150
     end
 
     # test "get api/v1/foods/:id returns 200 for found id", %{conn: conn} do

@@ -1,4 +1,5 @@
 defmodule PhQuantifiedSelf.Food do
+  @derive {Poison.Encoder, except: [:__meta__]}
   use Ecto.Schema
   import Ecto.Changeset
 
