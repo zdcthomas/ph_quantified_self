@@ -46,7 +46,7 @@ defmodule PhQuantifiedSelfWeb.MealTest do
 
       Meal.add_food(meal, food)
       meal = Meal.find(1)
-      food = Food.find(1)
+      # food = Food.find(1)
 
       assert length(meal.foods) == 1
     end
@@ -63,8 +63,6 @@ defmodule PhQuantifiedSelfWeb.MealTest do
 
       Meal.remove_food(meal, food)
       meal = Meal.find(1)
-      food = Food.find(1)
-
       assert length(meal.foods) == 0
     end
   end
