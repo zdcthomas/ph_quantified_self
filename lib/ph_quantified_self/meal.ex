@@ -31,10 +31,13 @@ defmodule PhQuantifiedSelf.Meal do
   end
 
   def find(id) do
-    Meal
-    |>select([:id, :name])
-    |>Repo.get(id)
-    |>Repo.preload(:foods)
+    if (Repo.get(Meal, id)) do
+      Meal
+      |>select([:id, :name])
+      |>Repo.get(id)
+      |>Repo.preload(:foods)
+    else
+    end
   end
 
   def add_food(meal, food) do
@@ -46,6 +49,16 @@ defmodule PhQuantifiedSelf.Meal do
     Meal_Food
     |>Repo.get_by(meal_id: meal.id, food_id: food.id)
     |>Repo.delete()
-    {:ok, food, meal}
+    # {:ok, food, meal}
+  end
+
+  def assoc?(meal, food) do
+    assoc = Meal_Food
+    |>Repo.get_by(meal_id: meal.id, food_id: food.id)
+    if (assoc) do
+      true
+    else
+      false
+    end
   end
 end

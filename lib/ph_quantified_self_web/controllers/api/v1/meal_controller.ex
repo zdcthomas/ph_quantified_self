@@ -35,6 +35,20 @@ defmodule PhQuantifiedSelfWeb.Api.V1.MealController do
       |>put_status(404)
       |>json(%{error: "Meal or Food not found"})
     end
-   end
-    
+  end
+
+  def delete(conn, params) do
+    [{food_id, ""}, {meal_id, ""}] = [Integer.parse(params["food_id"]), Integer.parse(params["meal_id"])]
+    [food, meal] = [Food.find(food_id), Meal.find(meal_id)]
+    if (food && meal && Meal.assoc?(meal,food)) do
+      Meal.remove_food(meal, food)
+      conn
+      |>put_status(200)
+      |>json(%{message: "Successfully removed #{food.name} to #{meal.name}"})
+    else
+      conn
+      |>put_status(404)
+      |>json(%{error: "Not Found"})
+    end
+  end
 end

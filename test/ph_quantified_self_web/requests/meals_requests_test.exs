@@ -78,7 +78,6 @@ defmodule PhQuantifiedSelfWeb.MealRequestTest do
     end
     test "DELETE /api/v1/meals/:id/foods/:id non success", %{conn: conn} do
       Repo.insert(%Meal{name: "Breakfast", id: 1})
-      Repo.insert(%Meal_Food{meal_id: 1, food_id: 1})
 
       conn = delete conn, "/api/v1/meals/1/foods/1"
       response = json_response(conn, 404)
