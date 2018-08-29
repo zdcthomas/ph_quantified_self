@@ -62,4 +62,19 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
       assert response
     end
   end
+  describe "delete queries" do
+    test "DELETE /api/v1/foods/:id", %{conn: conn} do
+      Repo.insert(%Food{name: "Bannana",calories: 150, id: 1})
+      conn = delete conn, "/api/v1/foods/1"
+      response = json_response(conn, 204)
+      assert response
+      refute List.first(Food.all)
+    end
+    test "DELETE /api/v1/foods/:id unsuccesful ", %{conn: conn} do
+      Repo.insert(%Food{name: "Bannana",calories: 150, id: 1})
+      conn = delete conn, "/api/v1/foods/2"
+      response = json_response(conn, 404)
+      assert response
+    end
+  end
 end
