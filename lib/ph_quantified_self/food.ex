@@ -11,7 +11,7 @@ defmodule PhQuantifiedSelf.Food do
     field :calories, :integer
     field :name, :string
 
-    many_to_many :meals, PhQuantifiedSelf.Food, join_through: "meal_foods"
+    many_to_many :meals, Meal, join_through: "meal_foods"
 
     timestamps()
   end

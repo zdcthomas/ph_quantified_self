@@ -17,6 +17,8 @@ defmodule PhQuantifiedSelfWeb.Router do
     scope "/v1", Api.V1, as: :v1 do
       pipe_through :api
       resources "/foods", FoodController
+      get "/meals", MealController, :index
+      get "/meals/:id/foods", MealController, :show
     end
   end
 

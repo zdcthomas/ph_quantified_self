@@ -10,13 +10,10 @@ defmodule PhQuantifiedSelf.Meal do
   alias PhQuantifiedSelf.{Repo, Food, Meal}
   alias PhQuantifiedSelf.Meal.Food, as: Meal_Food
 
-
-
-
   schema "meals" do
     field :name, :string
 
-    many_to_many :foods, PhQuantifiedSelf.Food, join_through: "meal_foods"
+    many_to_many :foods, Food, join_through: "meal_foods"
     timestamps()
   end
 
