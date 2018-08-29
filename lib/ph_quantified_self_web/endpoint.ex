@@ -2,6 +2,7 @@ defmodule PhQuantifiedSelfWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :ph_quantified_self
 
   socket "/socket", PhQuantifiedSelfWeb.UserSocket
+  
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -36,7 +37,8 @@ defmodule PhQuantifiedSelfWeb.Endpoint do
     store: :cookie,
     key: "_ph_quantified_self_key",
     signing_salt: "SxoZ9bzC"
-
+    
+  plug CORSPlug, origin: "*"
   plug PhQuantifiedSelfWeb.Router
 
   @doc """
