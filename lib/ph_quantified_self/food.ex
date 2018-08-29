@@ -4,12 +4,14 @@ defmodule PhQuantifiedSelf.Food do
   import Ecto.Changeset
 
   import Ecto.Query, warn: false
-  alias PhQuantifiedSelf.{Repo, Food}
+  alias PhQuantifiedSelf.{Repo, Food, Meal}
 
 
   schema "foods" do
     field :calories, :integer
     field :name, :string
+
+    many_to_many :meals, PhQuantifiedSelf.Food, join_through: "meal_foods"
 
     timestamps()
   end
@@ -21,17 +23,23 @@ defmodule PhQuantifiedSelf.Food do
     |> validate_required([:name, :calories])
   end
 
-
   def all do
-    Repo.all Food
+    Food
+    |>select([:id, :name, :calories])
+    |>Repo.all()
+    |>Repo.preload(:meals)
   end
 
   def find(id) do
-    Repo.get(Food,id)
+    Food
+    |>select([:id, :name, :calories])
+    |>Repo.get(id)
+    |>Repo.preload(:meals)
   end
 
   def update(%Food{} = food, attrs) do
     food
+    |>Repo.preload(:meals)
     |> Food.changeset(attrs)
     |> Repo.update()
   end
@@ -42,6 +50,7 @@ defmodule PhQuantifiedSelf.Food do
 
   def create(attrs \\ %{}) do
     %Food{} 
+    |>Repo.preload(:meals)
     |>Food.changeset(attrs)
     |>Repo.insert()
   end
