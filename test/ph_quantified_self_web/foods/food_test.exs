@@ -23,7 +23,6 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
     test "all" do
       Repo.insert(%Food{name: "Bannana",calories: 150})
       Repo.insert(%Food{name: "Grape",calories: 200})
-
       foods = Food.all
       assert length(foods) == 2
       assert List.first(foods).name == "Bannana" 
