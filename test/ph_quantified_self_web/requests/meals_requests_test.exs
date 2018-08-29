@@ -1,8 +1,9 @@
-defmodule PhQuantifiedSelfWeb.FoodRequestTest do
+defmodule PhQuantifiedSelfWeb.MealRequestTest do
   use PhQuantifiedSelfWeb.ConnCase
   alias PhQuantifiedSelf.{Meal, Food}
   alias PhQuantifiedSelf.Repo
-  alias PhQuantifiedSelf.Meal.Food as: Meal_Food
+  alias PhQuantifiedSelf.Meal.Food, as: Meal_Food
+
   describe "get queries" do
     test "get /api/v1/meals", %{conn: conn} do
       Repo.insert(%Meal{name: "Breakfast", id: 1})
@@ -16,7 +17,6 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
 
       conn = get conn, "/api/v1/meals"
       response = json_response(conn, 200)
-
       assert length(response) == length(Meal.all)
       [meal|_] = response
       assert meal["name"] == "Breakfast"

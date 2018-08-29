@@ -12,7 +12,6 @@ defmodule PhQuantifiedSelf.Meal.Food do
 
   @doc false
   def changeset(food, attrs) do
-    require IEx; IEx.pry
     food
     |> cast(attrs, [])
     |> validate_required([])
