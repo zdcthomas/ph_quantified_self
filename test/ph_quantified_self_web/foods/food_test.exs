@@ -45,7 +45,6 @@ defmodule PhQuantifiedSelfWeb.FoodTest do
       calories = 150
       attrs = %{name: name, calories: calories, id: 20}
       Food.create(attrs)
-      require IEx; IEx.pry
       [food | _] = Food.all
       assert food.name === name
       assert food.calories == calories
