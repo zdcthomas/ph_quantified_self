@@ -20,6 +20,7 @@ defmodule PhQuantifiedSelfWeb.Router do
       get "/meals", MealController, :index
       get "/meals/:id/foods", MealController, :show
       post "/meals/:meal_id/foods/:food_id", MealController, :update
+      delete "/meals/:meal_id/foods/:food_id", MealController, :delete
     end
   end
 
