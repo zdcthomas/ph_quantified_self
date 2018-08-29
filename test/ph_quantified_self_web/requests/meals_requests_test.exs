@@ -39,4 +39,30 @@ defmodule PhQuantifiedSelfWeb.MealRequestTest do
       assert length(response["foods"]) == 2
     end
   end
+  describe "create/update queries" do
+    test "post api/v1/meals/:id/foods/:id success", %{conn: conn} do
+      Repo.insert(%Meal{name: "Breakfast", id: 1})
+      Repo.insert(%Meal{name: "Snack", id: 2})
+      Repo.insert(%Meal{name: "Lunch", id: 3})
+      Repo.insert(%Food{id: 1, name: "Bannana", calories: 150})
+      Repo.insert(%Food{name: "Grape", calories: 200, id: 2})
+      Repo.insert(%Meal_Food{meal_id: 1, food_id: 1})
+      Repo.insert(%Meal_Food{meal_id: 2, food_id: 2})
+
+      conn = post conn, "/api/v1/meals/1/foods/2"
+      response = json_response(conn, 201)
+      creation_message =  response["message"]
+      assert creation_message == "Successfully added Grape to Breakfast"
+    end
+
+    test "post api/v1/foods failure", %{conn: conn} do
+      Repo.insert(%Meal{name: "Breakfast", id: 1})
+      Repo.insert(%Meal{name: "Snack", id: 2})
+      Repo.insert(%Meal{name: "Lunch", id: 3})
+      
+      conn = post conn, "/api/v1/meals/1/foods/2"
+      response = json_response(conn, 404)
+      assert response
+    end
+  end
 end

@@ -19,6 +19,7 @@ defmodule PhQuantifiedSelfWeb.Router do
       resources "/foods", FoodController
       get "/meals", MealController, :index
       get "/meals/:id/foods", MealController, :show
+      post "/meals/:meal_id/foods/:food_id", MealController, :update
     end
   end
 
@@ -26,9 +27,5 @@ defmodule PhQuantifiedSelfWeb.Router do
     pipe_through :browser # Use the default browser stack
     get "/", PageController, :index
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", PhQuantifiedSelfWeb do
-  #   pipe_through :api
-  # end
+  
 end
