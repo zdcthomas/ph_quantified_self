@@ -46,7 +46,7 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
       food_params = %{food: %{name: name, calories: calories}}
       conn = post conn, "/api/v1/foods", food_params
       response = json_response(conn, 200)
-      food =  response["food"]
+      food =  response
       assert food["name"] == name
       assert food["calories"] == calories
       [food|_] = Food.all

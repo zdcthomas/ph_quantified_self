@@ -53,6 +53,5 @@ defmodule PhQuantifiedSelf.Food do
     |>Repo.preload(:meals)
     |>Food.changeset(attrs)
     |>Repo.insert()
-  end
-
+  end 
 end

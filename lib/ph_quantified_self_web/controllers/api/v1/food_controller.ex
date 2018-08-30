@@ -29,7 +29,7 @@ defmodule PhQuantifiedSelfWeb.Api.V1.FoodController do
       {:ok, food} ->
         conn
         |>put_status(200)
-        |>json(%{food: Serializer.food(food)})
+        |>json(Serializer.food(food))
       {:error, error} ->
         conn
         |>put_status(400)

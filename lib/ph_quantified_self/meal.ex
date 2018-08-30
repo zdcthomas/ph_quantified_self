@@ -49,7 +49,6 @@ defmodule PhQuantifiedSelf.Meal do
     Meal_Food
     |>Repo.get_by(meal_id: meal.id, food_id: food.id)
     |>Repo.delete()
-    # {:ok, food, meal}
   end
 
   def assoc?(meal, food) do
