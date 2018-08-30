@@ -5,7 +5,7 @@ Setup
 mix deps.get
 mix ecto.migrate
 mix run priv/repo/seeds.exs
-(in preffered environemnt using MIX_ENV=<your env>
+(in preffered environemnt using MIX_ENV=<your env>)
 mix test
 mix phx.server
 ```
