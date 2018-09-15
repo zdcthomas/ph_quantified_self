@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/da6b15f1487340e1b87d29780ae732d2)](https://www.codacy.com/app/zdcthomas/ph_quantified_self?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zdcthomas/ph_quantified_self&amp;utm_campaign=Badge_Grade)
 
 Setup
 
