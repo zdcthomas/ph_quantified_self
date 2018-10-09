@@ -22,6 +22,22 @@ defmodule PhQuantifiedSelfWeb.Api.V1.FoodController do
     end
   end
 
+  def update(conn, params) do
+    {id, ""} = Integer.parse(params["id"])
+    %{"food"=> food_params} = params
+    food = Food.find(id)
+    case Food.update(food, food_params) do
+      {:ok, food} ->
+        conn
+        |> put_status(201)
+        |> json(Serializer.food(food))
+      {:error, error} ->
+        conn
+        |>put_status(400)
+        |>json(%{error: "Unable to create food"})
+    end
+  end
+
   def create(conn, params) do
     %{"food"=> food} = params
     case Food.create(food) do
