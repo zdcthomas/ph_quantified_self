@@ -61,6 +61,26 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
       response = json_response(conn, 400)
       assert response
     end
+
+    test "patch api/v1/foods success", %{conn: conn} do
+      name = "Bannana"
+      calories = 100
+      Repo.insert(%Food{name: "Bannana",calories: 150, id: 1})
+      new_name = "Grape"
+      new_calories = 200
+      food_params = %{food: %{name: new_name, calories: new_calories}}
+      conn = patch conn, "/api/v1/foods/1", food_params
+      response = json_response(conn,  201)
+      assert response["name"] == new_name
+      assert response["calories"] == new_calories
+    end
+
+    test "patch api/v1/foods failure", %{conn: conn} do
+      new_name = "Grape"
+      new_calories = 200
+      food_params = %{food: %{name: new_name, calories: new_calories}}
+    end
+
   end
   describe "delete queries" do
     test "DELETE /api/v1/foods/:id", %{conn: conn} do
