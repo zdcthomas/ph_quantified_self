@@ -79,6 +79,10 @@ defmodule PhQuantifiedSelfWeb.FoodRequestTest do
       new_name = "Grape"
       new_calories = 200
       food_params = %{food: %{name: new_name, calories: new_calories}}
+      conn = patch conn, "/api/v1/foods/1", food_params
+      response = json_response(conn, 400)
+      assert response
+      assert response["error"] == "Food not found"
     end
 
   end
